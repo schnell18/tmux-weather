@@ -6,7 +6,8 @@ source "$CURRENT_DIR/helpers.sh"
 
 print_forecast() {
   local format=$(get_tmux_option @forecast-format "%C+%t+%w")
-  echo $(curl http://wttr.in/?format=$format)
+  local city=$(get_tmux_option @forecast-city "")
+  echo $(curl http://wttr.in/${city}?format=$format)
 }
 
 main() {
